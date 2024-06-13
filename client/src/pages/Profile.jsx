@@ -7,6 +7,7 @@ import { app } from "../firebase";
 import { updateUserStart, updateUserSuccess, updateUserFailure } from "../redux/user/userSlice";
 import { deleteUserStart, deleteUserSuccess, deleteUserFailure, signoutUserStart, signoutUserSuccess, signoutUserFailure } from "../redux/user/userSlice";
 import { async } from "@firebase/util";
+import { Link } from "react-router-dom";
 
 // import { useDispatch } from "react-redux";
 
@@ -157,6 +158,11 @@ const handleFileUpload = (file) => {
         p-3 uppercase hover:opacity-95 disabled:opacity-80 mt-3">
           {loading ? 'Loading...' : 'Update' }
           </button>
+
+        <Link className="bg-green-700 text-white rounded-lg
+        p-3 uppercase mt-5 text-center hover:opacity-95" to={"/create-listing"}>
+          Create Listing</Link> 
+          
        </form>
        <div className="flex justify-between mt-5">
         <span onClick={handleDeleteUser} className="text-red-700 cursor-pointer">Delete Account</span>
