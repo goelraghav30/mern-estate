@@ -2,6 +2,7 @@ import { async } from '@firebase/util';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Listingitem from '../components/Listingitem';
 
 export default function Search() {
     const navigate = useNavigate();
@@ -182,8 +183,21 @@ export default function Search() {
                 <button className='border bg-slate-700 p-3 uppercase hover:opacity-95 text-white rounded-lg'>Search</button>
             </form>
         </div>
-        <div className=''>
+        <div className='flex-1'>
             <h1 className='text-3xl font-semibold border-b p-3 text-slate-700 mt-5'>Listing Results:</h1>
+            <div className='p-7 flex flex-wrap gap-4'>
+                {!Loading && listings.length === 0 && (
+                    <p className='text-xl text-slate-700'>No listing found!</p>
+                )}
+                {Loading && (
+                    <p className='text-xl text-slate-700 text-center w-full'>Loading...</p>
+                )
+                }
+
+                {
+                    !Loading && listings && listings.map((listing) => <Listingitem key={listing._id} listing={listing} />)
+                }
+            </div>
         </div>
     </div>
   )
