@@ -121,7 +121,7 @@ const handleFileUpload = (file) => {
   const handleShowListings = async () => {
     try {
       setShowListingsError(false);
-      const res = await fetch(`/api/user/listings/${currentUser._id}`);
+      const res = await fetch(`https://goel-estate.onrender.com/api/user/listings/${currentUser._id}`);
       const data = await res.json()
       if (data.success === false){
         setShowListingsError(true);
