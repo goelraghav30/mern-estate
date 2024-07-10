@@ -121,7 +121,7 @@ const handleFileUpload = (file) => {
   const handleShowListings = async () => {
     try {
       setShowListingsError(false);
-      const res = await fetch(`https://goel-estate.onrender.com/api/user/listings/${currentUser._id}`);
+      const res = await fetch(`/api/user/listings/${currentUser._id}`);
       const data = await res.json()
       if (data.success === false){
         setShowListingsError(true);
@@ -208,7 +208,7 @@ const handleFileUpload = (file) => {
        <button onClick={handleShowListings} className=" text-green-700 w-full hover:opacity-75 " >Show Listings</button>
        <p className="text-red-700 mt-5">{showListingsError ? 'Error showing Listings' : ""}</p>
        
-       {userListings && userListings.length > 0 && 
+       {userListings && userListings.length > 0 && (
        <div className="flex flex-col gap-4">
         <h1 className="text-center text-2xl font-semibold">Your Listings</h1>
        {userListings.map((listing) => (
@@ -230,7 +230,7 @@ const handleFileUpload = (file) => {
         </div>
        ))}
        </div>
-       } 
+       )} 
       </div>
   )
 }
